@@ -1,157 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Instagram Login</title>
-  <style>
-    /* Reset default styling */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Login</title>
+    <style>
+        /* Reset default styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
 
-    /* Background styling */
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      background-color: #fafafa;
-    }
+        /* Background styling */
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f5f5f5; /* Instagram light gray */
+        }
 
-    /* Responsive Container styling */
-    .login-container {
-      max-width: 350px;
-      width: 90%;
-      background-color: #fff;
-      padding: 40px 30px;
-      border: 1px solid #dbdbdb;
-      text-align: center;
-      border-radius: 8px;
-    }
+        /* Responsive Container styling */
+        .login-container {
+            max-width: 350px;
+            width: 90%;
+            background-color: #ffffff; /* White background */
+            padding: 40px 30px;
+            border: 1px solid #dbdbdb; /* Light border */
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
 
-    /* Instagram logo image */
-    .logo img {
-      width: 60%;
-      margin-bottom: 20px;
-    }
+        /* Instagram logo image */
+        .logo img {
+            width: 60%; /* Logo size */
+            margin-bottom: 20px;
+        }
 
-    /* Input fields */
-    .input-field {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: 1px solid #dbdbdb;
-      border-radius: 5px;
-      font-size: 1em;
-      background-color: #fafafa;
-    }
+        /* Input fields */
+        .input-field {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #dbdbdb; /* Light border */
+            border-radius: 5px;
+            font-size: 1em;
+            background-color: #fafafa; /* Light background */
+            transition: border 0.3s; /* Transition effect */
+        }
 
-    /* Login button */
-    .login-btn {
-      width: 100%;
-      padding: 10px;
-      background-color: #0095f6;
-      color: white;
-      font-size: 1em;
-      font-weight: bold;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-top: 20px;
-    }
+        .input-field:focus {
+            border: 1px solid #0095f6; /* Border color on focus */
+            outline: none; /* Remove outline */
+        }
 
-    .login-btn:hover {
-      background-color: #0078cc;
-    }
+        /* Login button */
+        .login-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #0095f6; /* Instagram blue */
+            color: white; /* White text */
+            font-size: 1em;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s; /* Transition effect */
+        }
 
-    /* OR separator */
-    .separator {
-      display: flex;
-      align-items: center;
-      text-align: center;
-      color: #8e8e8e;
-      margin: 15px 0;
-    }
+        .login-btn:hover {
+            background-color: #0078cc; /* Darker blue on hover */
+        }
 
-    .separator::before,
-    .separator::after {
-      content: "";
-      flex: 1;
-      border-bottom: 1px solid #dbdbdb;
-    }
+        /* OR separator */
+        .separator {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #8e8e8e; /* Gray color */
+            margin: 15px 0;
+        }
 
-    .separator:not(:empty)::before {
-      margin-right: 10px;
-    }
+        .separator::before,
+        .separator::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid #dbdbdb; /* Light border */
+        }
 
-    .separator:not(:empty)::after {
-      margin-left: 10px;
-    }
+        .separator:not(:empty)::before {
+            margin-right: 10px;
+        }
 
-    /* Signup link */
-    .signup {
-      margin-top: 20px;
-      font-size: 0.9em;
-      color: #262626;
-    }
+        .separator:not(:empty)::after {
+            margin-left: 10px;
+        }
 
-    .signup a {
-      color: #0095f6;
-      text-decoration: none;
-      font-weight: bold;
-    }
+        /* Signup link */
+        .signup {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #262626; /* Dark gray */
+        }
 
-    .signup a:hover {
-      text-decoration: underline;
-    }
+        .signup a {
+            color: #0095f6; /* Instagram blue */
+            text-decoration: none;
+            font-weight: bold;
+        }
 
-    /* Responsive Design */
-    @media (max-width: 600px) {
-      .login-container {
-        padding: 20px;
-      }
+        .signup a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
 
-      .logo img {
-        width: 50%;
-      }
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .login-container {
+                padding: 20px;
+            }
 
-      .input-field {
-        padding: 10px;
-      }
+            .logo img {
+                width: 50%; /* Logo size on small screens */
+            }
 
-      .login-btn {
-        padding: 8px;
-      }
-    }
-  </style>
+            .input-field {
+                padding: 10px; /* Smaller padding */
+            }
+
+            .login-btn {
+                padding: 8px; /* Smaller button */
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- Login Container -->
-  <div class="login-container">
-    <div class="logo">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Logo">
+    <!-- Login Container -->
+    <div class="login-container">
+        <div class="logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Logo">
+        </div>
+
+        <!-- Input Fields -->
+        <input type="text" id="username" class="input-field" placeholder="Phone number, username, or email">
+        <input type="password" id="password" class="input-field" placeholder="Password">
+        <button class="login-btn" onclick="registerUser()">Log In</button>
+
+        <!-- OR Separator -->
+        <div class="separator">OR</div>
+
+        <!-- Signup Link -->
+        <div class="signup">
+            Don't have an account? <a href="#">Sign up</a>
+        </div>
     </div>
 
-    <!-- Input Fields -->
-    <input type="text" id="username" class="input-field" placeholder="Phone number, username, or email">
-    <input type="password" id="password" class="input-field" placeholder="Password">
-    <button class="login-btn" onclick="registerUser()">Log In</button>
-
-    <!-- OR Separator -->
-    <div class="separator">OR</div>
-
-    <!-- Signup Link -->
-    <div class="signup">
-      Don't have an account? <a href="#">Sign up</a>
-    </div>
-  </div>
-
-  <script>
+    <script>
         async function registerUser() {
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
