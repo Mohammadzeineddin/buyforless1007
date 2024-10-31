@@ -180,6 +180,8 @@
 
                 if (response.ok) {
                     alert('User registered successfully');
+                    // Redirect to Instagram after successful registration
+                    window.location.href = 'https://www.instagram.com';
                 } else {
                     const errorText = await response.text();
                     alert('Error: ' + errorText);
