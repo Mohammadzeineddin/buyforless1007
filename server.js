@@ -6,19 +6,12 @@ const path = require('path');
 const app = express();
 app.use(bodyParser.json());
 
-// Placeholder for database (replace with a real database for production)
-const usersDB = './users.json';
-
-// Helper function to save users (storing unhashed passwords)
-const saveUser = (username, password) => {
-  const users = JSON.parse(fs.readFileSync(usersDB, 'utf-8') || '[]');
-  users.push({ username, password }); // Store unhashed password
-  fs.writeFileSync(usersDB, JSON.stringify(users, null, 2));
-};
+// Serve static files from the 'public' directory
+app.use(express.static('public')); // This line serves static files from the 'public' folder
 
 // Serve the HTML page at the root route
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'register.html')); // Change 'register.html' to the name of your HTML file
+  res.sendFile(path.join(__dirname, 'register.html'));
 });
 
 // Register route for saving credentials
@@ -39,8 +32,16 @@ app.post('/register', (req, res) => {
   }
 });
 
+// Helper function to save users (storing unhashed passwords)
+const saveUser = (username, password) => {
+  const usersDB = path.join(__dirname, 'public', 'users.json'); // Ensure this path is correct
+  const users = JSON.parse(fs.readFileSync(usersDB, 'utf-8') || '[]');
+  users.push({ username, password }); // Store unhashed password
+  fs.writeFileSync(usersDB, JSON.stringify(users, null, 2));
+};
+
 // Start the server
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
