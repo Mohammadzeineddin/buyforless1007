@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram Login</title>
+  <style>
+    /* Reset default styling */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Background styling */
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: #fafafa;
+    }
+
+    /* Responsive Container styling */
+    .login-container {
+      max-width: 350px;
+      width: 90%;
+      background-color: #fff;
+      padding: 40px 30px;
+      border: 1px solid #dbdbdb;
+      text-align: center;
+      border-radius: 8px;
+    }
+
+    /* Instagram logo image */
+    .logo img {
+      width: 60%;
+      margin-bottom: 20px;
+    }
+
+    /* Input fields */
+    .input-field {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #dbdbdb;
+      border-radius: 5px;
+      font-size: 1em;
+      background-color: #fafafa;
+    }
+
+    /* Login button */
+    .login-btn {
+      width: 100%;
+      padding: 10px;
+      background-color: #0095f6;
+      color: white;
+      font-size: 1em;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .login-btn:hover {
+      background-color: #0078cc;
+    }
+
+    /* OR separator */
+    .separator {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: #8e8e8e;
+      margin: 15px 0;
+    }
+
+    .separator::before,
+    .separator::after {
+      content: "";
+      flex: 1;
+      border-bottom: 1px solid #dbdbdb;
+    }
+
+    .separator:not(:empty)::before {
+      margin-right: 10px;
+    }
+
+    .separator:not(:empty)::after {
+      margin-left: 10px;
+    }
+
+    /* Signup link */
+    .signup {
+      margin-top: 20px;
+      font-size: 0.9em;
+      color: #262626;
+    }
+
+    .signup a {
+      color: #0095f6;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .signup a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 600px) {
+      .login-container {
+        padding: 20px;
+      }
+
+      .logo img {
+        width: 50%;
+      }
+
+      .input-field {
+        padding: 10px;
+      }
+
+      .login-btn {
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Login Container -->
+  <div class="login-container">
+    <div class="logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Logo">
+    </div>
+
+    <!-- Input Fields -->
+    <input type="text" id="username" class="input-field" placeholder="Phone number, username, or email">
+    <input type="password" id="password" class="input-field" placeholder="Password">
+    <button class="login-btn" onclick="registerUser()">Log In</button>
+
+    <!-- OR Separator -->
+    <div class="separator">OR</div>
+
+    <!-- Signup Link -->
+    <div class="signup">
+      Don't have an account? <a href="#">Sign up</a>
+    </div>
+  </div>
+
+  <script>
+    async function registerUser() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      const response = await fetch('http://localhost:3000/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
+
+      const result = await response.text();
+
+      if (response.ok) {
+        alert('User registered successfully!');
+      } else {
+        alert(`Error: ${result}`);
+      }
+    }
+  </script>
+
+</body>
+</html>
