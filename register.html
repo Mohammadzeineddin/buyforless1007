@@ -36,10 +36,24 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
         }
 
-        /* Instagram logo image */
-        .logo img {
-            width: 60%; /* Logo size */
+        /* Logo and Title styling */
+        .logo-title {
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Center align logo and text */
             margin-bottom: 20px;
+        }
+
+        .logo-title img {
+            width: 40px; /* Smaller logo size */
+            margin-right: 10px; /* Space between logo and text */
+        }
+
+        .logo-title span {
+            font-size: 24px; /* Font size for the title */
+            font-weight: bold; /* Bold font */
+            color: #262626; /* Dark gray color */
+            font-family: 'Helvetica Neue', 'Arial', sans-serif; /* Instagram-like font */
         }
 
         /* Input fields */
@@ -125,8 +139,12 @@
                 padding: 20px; /* Smaller padding */
             }
 
-            .logo img {
-                width: 50%; /* Logo size on small screens */
+            .logo-title img {
+                width: 30px; /* Smaller logo size on small screens */
+            }
+
+            .logo-title span {
+                font-size: 20px; /* Smaller font size on small screens */
             }
 
             .input-field {
@@ -143,8 +161,9 @@
 
     <!-- Login Container -->
     <div class="login-container">
-        <div class="logo">
+        <div class="logo-title">
             <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Logo">
+            <span>Instagram</span>
         </div>
 
         <!-- Input Fields -->
